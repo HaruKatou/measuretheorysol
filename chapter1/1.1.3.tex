@@ -1,0 +1,81 @@
+\begin{exercise}[Uniqueness of elementary measure]
+
+Let $d \ge 1$. Let \[m' : \mathcal{E}(\mathbb{R}^d) \to \mathbb{R}+\]
+be a map from a collection $\mathcal{E}(\mathbb{R}^d)$ of the elementary subsets of $\mathbb{R}^d$ to the non-negative reals that obeys the non-negativity, finite additivity, and translation invariance properties.
+
+show that there exist a constant $c \in \mathbb{R}^d$ such that
+\[
+m'(E) = c\,m(E)
+\] 
+for all elementary sets $E$. 
+\end{exercise}
+
+\begin{proof}
+Set $c:= m'([0,1)^d).$
+Let $n\in\mathbb{N}$. The unit cube $[0,1)^d$ can be factor as disjoints union of $n^d$ cubes:
+\[
+\prod_{j=1}^d \left[\frac{k_j}{n}, \frac{k_j+1}{n} \right),
+\qquad k_j\in\{0,\ldots,n-1\}.
+\]
+By translation invariance, they are have the same $m'$-measure, then by finite additivity, $c = m'([0,1)^d) = n^d\,m'\left(\left[0,\frac1n\right)^d\right).$
+Thus,
+\begin{equation}
+m'\left(\left[0,\frac1n\right)^d\right)
+=
+\frac{c}{n^d}.
+\label{eq:meaofscube}
+\end{equation}
+
+\par\noindent By translation invariance of $m'$, all the rational box $B' = \prod_{j=1}^d \left[a_j, b_j\right) ($a_j, b_j$ is rational), can be rewrite as: 
+\[
+B = \prod_{j=1}^d \left[0, \frac{p_j}{n}\right), \qquad p_j\in\mathbb{N}.
+\]
+with $m'(B') = m'(B)$.
+The box $B$ is the disjoint union of $p_1p_2\cdots p_d$ tranlates of $\left[0,\frac1n\right)^d$.
+Thus, by translation invariance, finite additivity and \eqref{eq:meaofscube},
+\[
+m'(B) = p_1p_2\cdots p_d
+\,m'\left(\left[0,\frac1n\right)^d\right) = c\prod_{j=1}^d\frac{p_j}{n}.
+\]
+Since $m(B)=\prod_{j=1}^d\frac{p_j}{n},$, we obtain
+$m'(B) = c\,m(B)$ for all rational box.
+
+\par\noindent By finite additivity and non-negative property, $m'$ is monotone, which mean: If $A\subseteq B$ then $m'(A)\le m'(B)$.
+Now let $B=\prod_{j=1}^d [a_j,b_j)$ be an arbitrary box.
+Since $\mathbb{Q}$ is dense in $\mathbb{R}$, we may choose
+rational boxes $Q_n^-$ and $Q_n^+$ such that
+\[
+Q_n^- \subseteq B \subseteq Q_n^+
+\]
+and
+\[
+m(Q_n^-)\to m(B),
+\qquad
+m(Q_n^+)\to m(B).
+\]
+By monotonicity, $m'(Q_n^-)\le m'(B)\le m'(Q_n^+)$.
+Since the identity has already been proved for rational boxes, $c\,m(Q_n^-) \le m'(B) \le c\,m(Q_n^+).$ 
+Letting $n\to\infty$, we obtain $c\,m(B)\le m'(B)\le c\,m(B)$.
+
+Finally, let $E\in\mathcal{E}(\mathbb{R}^d)$ be an elementary set.
+Then $E$ can be written as a finite disjoint union of boxes,
+\[
+E=B_1\sqcup\cdots\sqcup B_N.
+\]
+By finite additivity, \[
+m'(E) = \sum_{i=1}^N m'(B_i) = \sum_{i=1}^N c\,m(B_i).
+\]
+Hence
+\[
+m'(E)=c\,m(E)
+\]
+for every elementary set $E$.
+\end{proof}
+
+\begin{note}
+Why does proving the identity for rational boxes not require the non-negativity property?
+
+1. Addition is tightly connected to multiplication. Therefore, finite additivity together with translation invariance allows us to derive the measure of every rational cube from the unit cube, without needing any further assumption.
+
+2. Non-negativity makes the map order-preserving. This allows rational inner and outer approximations to bound the value of \(m'\) on an arbitrary real box. Since \(\mathbb Q\) is dense in \(\mathbb R\), these bounds can be made arbitrarily tight, forcing a unique value for \(m'\).
+\end{note}
