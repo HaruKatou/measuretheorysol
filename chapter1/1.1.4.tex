@@ -1,0 +1,72 @@
+\begin{exercise}[Product of elementary sets]
+Let $E_1 \subseteq \mathbb{R}^{d_1}$ and
+$E_2 \subseteq \mathbb{R}^{d_2}$ be elementary sets.
+Show that $E_1 \times E_2$ is an elementary subset of
+$\mathbb{R}^{d_1+d_2}$, and that
+\[
+m^{d_1+d_2}(E_1 \times E_2)
+=
+m^{d_1}(E_1)\,m^{d_2}(E_2).
+\]
+\end{exercise}
+
+\begin{proof}
+If either set is empty, the assertion is immediate.
+By Lemma 1.1.2, write
+\[
+E_1 = \bigsqcup_{i=1}^m B_i,
+\qquad
+E_2 = \bigsqcup_{j=1}^n C_j.
+\]
+
+\par\noindent Write
+\[
+B_i = I_{i,1}\times\cdots\times I_{i,d_1},
+\qquad
+C_j = J_{j,1}\times\cdots\times J_{j,d_2}.
+\]
+Then
+\[
+B_i\times C_j
+=
+I_{i,1}\times\cdots\times I_{i,d_1}
+\times J_{j,1}\times\cdots\times J_{j,d_2},
+\]
+so $B_i\times C_j$ is a box in $\mathbb{R}^{d_1+d_2}$, with
+\[
+|B_i\times C_j|
+=
+\left(\prod_{r=1}^{d_1}|I_{i,r}|\right)
+\left(\prod_{s=1}^{d_2}|J_{j,s}|\right)
+=
+|B_i|\,|C_j|.
+\]
+
+\par\noindent For $(i,j)\neq(i',j')$, we have
+\[
+(B_i\times C_j)\cap(B_{i'}\times C_{j'})
+=
+(B_i\cap B_{i'})\times(C_j\cap C_{j'}).
+\]
+Either $i\neq i'$ or $j\neq j'$, so at least one intersection
+on the right is empty. Thus the product boxes are pairwise
+disjoint, and
+\[
+E_1\times E_2
+=
+\bigsqcup_{i=1}^m\bigsqcup_{j=1}^n (B_i\times C_j).
+\]
+Hence $E_1\times E_2$ is elementary.
+
+\par\noindent Finally, by the definition of elementary measure,
+\[
+\begin{aligned}
+m^{d_1+d_2}(E_1\times E_2)
+&=\sum_{i=1}^m\sum_{j=1}^n |B_i\times C_j|\\
+&=\sum_{i=1}^m\sum_{j=1}^n |B_i|\,|C_j|\\
+&=\left(\sum_{i=1}^m |B_i|\right)
+  \left(\sum_{j=1}^n |C_j|\right)\\
+&=m^{d_1}(E_1)\,m^{d_2}(E_2).
+\end{aligned}
+\]
+\end{proof}
