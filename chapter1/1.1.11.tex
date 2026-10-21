@@ -1,0 +1,206 @@
+\textbf{Exercise 1.1.11} Let $R^d \rightarrow R^d$ be linear transformation
+
+\vspace{2cm}
+(1) Show that $\exists D \in R^+$ s.t $m(L(E)) = Dm(E) \forall \text{ elementary set } E$. $L(E)$ is Jordan measurable
+
+Recall \textbf{Exercise 1.1.3} $d \ge 1, m': \mathcal{E}(R^d) \rightarrow R^+ $ a map from collection $\mathcal{E}(R^d)$ of elementary subsets of $R^d$ to nonnegative reals that obeys the non-negative, finite additivity and translation invariance properties. 
+$\exists \text{ constant } c \in R^+$ s.t $m'(E) = cm(E) \forall \text{ elementary set } E$.
+
+% Let $c:= m'[0,1)^d$. 
+% The unit cube splits into $n^d$ disjoint transllates of small cube $Q_n = [0,1/n)^d$. 
+% \textbf{Translation} invariance means each copy has same m' value, and additivity gives
+% \[
+% c = n^d m'(Q_n) \implies m'(Q_n) = c / n^d
+% \]
+
+
+% \textbf{Monotonicity} If $E \subseteq F \implies F = E \cup (F \setminus E) \implies m'(F) = m'(E) + m'(F \setminus E) \ge m'(E)$
+
+% Use grid of cubes of 1 / n. Let
+% $I_n$ = numbert of grid cubes inside B
+% $O_n$ = number of grid cubes touch B
+% $\cup I_n \subseteq B \subseteq \cup O_n \implies c I_n \frac{1}{n^d} \le m'(B) \le c O_n \frac{1}{n^d}$
+% As $n \rightarrow \infty, I_n / n^d , O_n / n^d \rightarrow |B|$.. Hence $m'(B) = c |B|$. 
+
+% $E = \bigsqcup B_k \implies m'(E) = \sum m'(B_i) = c \sum |B_i| = c m(E)$
+
+Map $E \mapsto m(L(E))$ 
+Define $m'(E) = m(L(E))$. Three axioms checking :
+
+\textbf{Non-negativity} $m'(E) = m(L(E)) \ge 0$ Jordan measure is non-negative
+
+\textbf{Translation invariance} By linearity of L, $L(E+x) = L(E) + Lx$ combine with translation invariant of Jordan,
+\[
+m'(E+x) = m(L(E+x)) =  m(L(E) +Lx) = m(L(E)) = m'(E)
+\]
+
+\textbf{Finite additivity} E, F be disjoint elementary sets, Images $L(E \cup F) = L(E) \cup L(F)$ btu these need not be disjoint,
+\begin{itemize}
+    \item L is invertible, then L injective means disjoint set have disjoint images, following additity of Jordan 
+    \[
+    m'(E \cup F) = m(L(E) \cup L(F)) = m(L(E)) + m(L(F)) = m'(E) + m'(F)  
+    \]
+    \item L is not invertible: L not injective mean range of L contained in hyperplance. Hyperplane mean dim -1 so exists box with one side as thin as we like. Hence $m'(E) = 0, 0 = 0 + 0$ satisfy finite additivity
+\end{itemize}
+So $m'$ satisfies all three axioms, so 
+\[
+m(L(E)) = Dm(E), \quad D:= m'([0,1)^d) = m(L([0,1)^d)
+\]
+
+\vspace{2cm}
+(2) If E is Jordan measurable then
+1. L(E) is Jordan measurable
+
+Recall $m_*(S) = \sup_{A \subseteq S, A \text{ elementary}} m(A), \quad m^*(S) = \inf_{B \supseteq, B \text{ elementary}} m(B)$
+S is Jordan measurable when $m_*(S) = m^*(S)$ then $m(S)$ is Jordan measure of S. Following \textbf{Exercise 1.1.5}, equivalent,
+\begin{itemize}
+    \item $\forall \epsilon > 0, \exists \text{ elementary sets } A \subset E \subset B \quad s.t. m(B \setminus A) \le \epsilon$
+    \item $\forall \epsilon > 0, \exists \text{ elementary set A  s.t.} m^* (A \Delta E) \le \epsilon$ ($\Delta$ difference of sets)
+\end{itemize}
+
+E is Jordan measurable then $A \subset E \subset B, m(B \setminus A) \le \epsilon$
+\[
+\forall \alpha \in A,  a = L(a), \alpha \in A \subset E \implies \alpha \in L(E) \implies L(A) \subset L(E)
+\]
+Same for B, then $L(A) \subset L(E) \subset L(B)$
+A, B elementary set so following (1)
+\[
+m(L(A)) = Dm(A), \quad m(L(B)) = D m(B) \implies m(L(B) \setminus L(A) ) = D (m(B) - m(A)) \le D \epsilon = \epsilon'
+\]
+which implies L(E) measurable.
+
+2. $m(L(E)) = Dm(E)$, same D as (1)
+
+Following \textbf{monotonicity} of Jordan
+\[
+m(L(A)) \le m(L(E)) \le m(L(B)) \implies Dm(A) \le m(L(E)) \le Dm(B), \quad Dm(A) \le Dm(E) \le Dm(B)
+\]
+Because of $Dm(B) -  Dm(A) \le \epsilon'$, we have $m(L(E)) = Dm(E)$
+
+\vspace{2cm}
+(3) Show that $D = |\det L|$
+As known in (1), write $D(L) = m(L[0,1)^d)$
+
+% \textbf{Hint} Elementary transformation: 
+% Elementary operations: swap (two rows or column), scale (one row by non zero scale), add (one row to another)
+% Each corresponds to multiplying by an elementary matrix E (identify with one elementary operation applied). Properties: invertible, row operation preserve the solution set of Ax = b; row operations preserve rank, column operations change solution set.
+
+% Gaussian elimination is algorithm uses elementary row operations reduce matrix to row echelon form.
+% Diagonal transformation $A = PDP^{-1}$ needs eigenbasis
+% Orthogonal transformation $Q^TQ = I$ preserves lengths/angles -> preserve inner product
+
+\textbf{Non-invertible  case}
+If L is not invertible, det L = 0. In this case, L(Q) lies inside a hyperplane so has Jordan measure 0. Hence D(L) = 0 = |det L|
+
+\textbf{Invertible case}
+Let E be elementary. By part (i), $L_2(E)$ is Jordan measurable with $m(L_2(E)) = D(L_2)m(E)$ 
+Applying (ii) to Jordan measurable set $L_2(E)$
+\[
+m(L_1 L_2 (E)) = D(L_1) m(L_2(E)) = D(L_1) D(L_2) m(E)
+\]
+Take $E= [0,1)^d$, we have
+\begin{equation}
+    \label{eq:multiplicative}
+    D(L_1L_2) = D(L_1) D(L_2)
+\end{equation}
+
+Every ivertible matrix is product of elementary matrices of: swap: exchange $x_i, x_j$, scale $x_i \mapsto \lambda x_i$, shear $x_i \mapsto x_i + \lambda x_j, \quad i \neq j$
+Following Gaussian elimination, row reduction turns L into I, so exists elementary transformation
+\[
+T_m ... T_1 L = I, \quad \text{then } L = T_1^{-1} ... T_M^{-1},
+\]
+Inverse of an elementary matrix is elementary
+We know $|\det|$ is multiplicative and
+\[
+D(L) = \prod_k D(T_k), \quad |\det L| = \prod_k |\det T_k|
+\]
+So we now need prove $D(T) = |\det L|$
+
+For convenient, define $Q = [0,1)^d$
+\textbf{Swap} This permutes coordinate, so T(Q) = Q. Henct $D(T) = 1 = |-1| = |\det T|$
+
+\textbf{Scale by $\lambda$} $T(Q)$ still a box but i-th $[0,1) \rightarrow [0, \lambda)$ if $\lambda >0 $ and $(\lambda, 0]$ if $\lambda < 0$. Every other side keeps length 1. So
+\[
+D(T) = |T(Q)| = |1\times...\times 1\times \lambda| = \lambda = |\det T|
+\]
+
+\textbf{Shear}
+Use squeeze idea as \textbf{Exercise 1.1.3}, fix $N > | \lambda|$. For k =0...N-1 set
+\[
+S_k = \{ x \in Q: x_j \in [k/N, (k+1) / N)  \}, \quad Q= \bigsqcup_{k=0}^{N-1} S_k
+\]
+Since T is bijection
+\[
+T (Q) = \bigsqcup_{k=0}^{N-1}T(S_k)
+\]
+On $S_k$, the coordinate $x_j$ ranges over an interval $I_k = [k /N, (k+1) / N]$ of length 1 /N. The i-th coordinate of T(x) is
+\[
+T(x)_i =   x_i + \lambda x_j, \quad x_i \in [0,1), x_j \in I_k
+\]
+Hence, the set of possible i-th coordinates of $T(S_k)$ is an interval of length
+\[
+1 + \frac{\lambda}{N}
+\]
+The other coordinates stay in [0,1) and j-th coordinate stays in $I_k$
+
+Define two axis-aligned boxed with j and i-th coordinate
+Inner box $B^{in}_k$: i-th side is the intersection over $x_j \in I_k$ if intervals $[0, 1) + \lambda x_j$. This intersection have length
+\[
+1 - \frac{|\lambda|}{N}
+\]
+Then $B^{in}_k \subseteq T(S_k)$
+
+Outer box $B_k^{out}$: the i-th side union over $x_j \in I_k$ of those intervals, of length
+\[
+1 + \frac{|\lambda|}{N}
+\]
+Then $T(S_k) \subseteq B_k^{out}$
+Thus
+\[
+B_k^{in} \subseteq T(S_k) \subseteq B_k^{out}
+\]
+Take disjoint union and Lebesgue measure, we have
+\[
+\sum_{k=0}^{N-1} m(B_k^{in}) \le m(T(Q))) \le \sum_{k=0}^{N-1} m(B_k^{out})
+\]
+Notice that
+\[
+m(B_k^{in})= \left( 1 -\frac{|\lambda|}{N} \right) \frac{1}{N} 1^{d-2} = \left(1- \frac{|\lambda|}{N} \right) / N
+\]
+Summing over k=0,...,N-1, 
+\[
+1 - \frac{|\lambda|}{N} \le m(T(Q)) \le 1 + \frac{|\lambda|}{N}
+\]
+As $N \rightarrow \infty$, $m(T(Q)) = 1 = \det T$
+
+
+ Together,
+ \[
+ D(L) = \prod_{k=1}^m D(T_k) = \prod_{k=1}^m |\det T_k| = | \det L|
+ \]
+
+ \textbf{Alternative way}
+ \[
+ \bar{B} = \{x: |x| \le 1\}
+ \]
+ is the closed unit ball in \textbf{Exercise 1.1.10}
+
+Diagonalizable: $L = U \Sigma V$, in which U, V is orthogonal matrices, $\Sigma =  diag (\sigma_1,...\sigma_d)$ diagonal matrix.
+An orthogonal preserves length: $|Ux|^2 = x^T U^T U x = |x|^2$. Hence $U(\bar B ) \subseteq \bar B$. The inverse $U^{-1} = U^T$ is orthogonal so $U^{-1} (\bar B) \subseteq \bar B$. Apply U to both gives $\bar B \subseteq U(\bar B)$
+
+The ball contains the cube $[0, \frac{1}{\sqrt{d}})^d$, because every point have $|x|^2 < d \cdot \frac{1}{d} = 1$. So $m( \bar B) \ge d ^{-d/2} > 0 $ (> volume of one cube). It is conted in [-1,1] so $m(\bar B) \le 2^d$
+
+Know $\bar B$ is Jordan measurable, (ii) gives $m(\bar B) = m ( U(\bar B )) = D(U) m(\bar B) \implies D(U) =1$
+
+\[
+\Sigma([0,1)^d) = [0, \sigma_1) \times ... \times [0, \sigma_d)
+\]
+This is a box so $D(\Sigma) = m(\Sigma([0,1)^d) = \sigma_1 \dots \sigma_d$
+
+
+For orthogonal U , $(\det U )^2 = \det (U ^T U ) = \det I = 1$, so $|\det U| = 1$; likewise $|\det V | = 1$.
+
+Hence,
+\[
+D(L) = D(U) D(\Sigma)(D(V) = 1 \cdot \sigma_! \dots \sigma_d \cdot  1 = |\det L|
+\]
