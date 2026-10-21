@@ -1,0 +1,27 @@
+\begin{exercise}
+(Regions under graphs are Jordan measurebale).
+Let \(B\) be a closed box in \(\mathbb R^d\), and \(f:B \to \mathbb R\) be a continuous function
+
+(1) Show that graph \(\{(x, f(x)):x \in B\} \subset \mathbb R^{d+1}\) is Jordan measurebale wiht m = 0
+
+(2) Show that the set \(\{(x,t):x \in B; 0 \leq t \leq f(x)\}\) is Jordan measurebale
+
+\end{exercise}
+
+\begin{proof}
+(1) on a compact metric space, continuous function are uniformly continuous, that mean, for all \(x \in B\), for all \(\epsilon > 0\),
+exist \(r > 0\) such that \(\forall x': |x'-x| < r\), \(|f(x') - f(x)| < \frac{\epsilon}{m(B)}\)
+
+Seperate \(B\) into finite disjoint boxes \(\{B_i\}_{i=1}^N\), \(B_i\) have length each edge \(\leq \beta\)
+
+For each \(B_i\), 
+\[
+\{(x, f(x)):x \in B_i\} \subset \left\{B_i \times \left[ inf_{x \in B_i}f(x), inf_{x \in B_i}f(x) + \frac{\epsilon}{m(B)} \right] \right\}% \left[inf_{x \in B_i}f(x), inf_{x \in B_i}f(x) + \frac{\epsilon}{m(B)\right]\}
+\]
+Therefore, \(m(\{(x, f(x)):x \in B_i\}) < m(B_i)\times \frac{\epsilon}{m(B)}\). 
+
+So \(m(\{(x, f(x)):x \in B\}) < \frac{m(B)}{m(B_i)} m(B_i)\times \frac{\epsilon}{m(B)} = \epsilon\) with \(\epsilon\) arbitrary small, so \(m(\{(x, f(x)):x \in B\}) = 0\)
+
+
+(2) Similar proof, seperate \(B\) into finite disjoint box, construct \(A \subset B \subset C\) and we can easily bound \(m(C \backslash A) < \epsilon\)
+\end{proof}
