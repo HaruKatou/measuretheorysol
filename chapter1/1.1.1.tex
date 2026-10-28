@@ -1,3 +1,125 @@
 \begin{exercise}
-Exercise 1.1.1
+\noindent\textbf{Exercise 1.1.1 (Boolean closure).}
+Show that if $E, F \subset \mathbb{R}^d$ are elementary sets,
+then the union $E \cup F$, the intersection $E \cap F$,
+and the set theoretic difference
+$
+E \setminus F := \{x \in E : x \notin F\},
+$
+and the symmetric difference
+$
+E \Delta F := (E \setminus F) \cup (F \setminus E)
+$
+are also elementary. If $x \in \mathbb{R}^d$, show that the translate
+$
+E + x := \{y + x : y \in E\}
+$
+is also an elementary set.
+
+\noindent\textbf{Proof.}
+
+Since $E$ and $F$ are elementary sets, they can be written as
+finite unions of boxes:
+\[
+E=\bigcup_{i=1}^{n}B_i,\qquad
+F=\bigcup_{j=1}^{m}C_j.
+\]
+
+\noindent\textbf{1. Union}
+
+We have
+\[
+E\cup F
+=\left(\bigcup_{i=1}^{n}B_i\right)
+\cup\left(\bigcup_{j=1}^{m}C_j\right).
+\]
+Since this is a finite union of boxes, $E\cup F$ is elementary.
+
+\noindent\textbf{2. Intersection}
+
+We know that
+\[
+E\cap F
+=\bigcup_{i=1}^{n}\bigcup_{j=1}^{m}(B_i\cap C_j).
+\]
+Let
+\[
+B_i=I_{i,1}\times\cdots\times I_{i,d},
+\quad
+C_j=J_{j,1}\times\cdots\times J_{j,d}.
+\]
+Then
+\[
+B_i\cap C_j
+=\prod_{r=1}^{d}(I_{i,r}\cap J_{j,r}).
+\]
+Since the intersection of two intervals is either an interval
+or empty, $B_i\cap C_j$ is also a box or empty.
+
+Therefore, $E\cap F$ is a finite union of boxes, so it is
+elementary.
+
+\noindent\textbf{3. Difference}
+
+First, consider the difference of two boxes $B_i$ and $C_j$.
+We can write
+\[
+B_i\setminus C_j
+=\bigcup_{r=1}^{d}
+\left(
+I_{i,1}\times\cdots\times
+(I_{i,r}\setminus J_{j,r})
+\times\cdots\times I_{i,d}
+\right).
+\]
+The difference of two intervals can be written as a union
+of at most two intervals. Thus, $B_i\setminus C_j$ is a
+finite union of boxes and is elementary.
+
+Now,
+\[
+\begin{aligned}
+E\setminus F
+&=\left(\bigcup_{i=1}^{n}B_i\right)
+\setminus\left(\bigcup_{j=1}^{m}C_j\right)\\
+&=\bigcup_{i=1}^{n}\bigcap_{j=1}^{m}
+(B_i\setminus C_j).
+\end{aligned}
+\]
+From parts 1 and 2, finite unions and intersections of
+elementary sets are elementary. Therefore, $E\setminus F$
+is elementary.
+
+\noindent\textbf{4. Symmetric difference}
+
+By definition,
+\[
+E\triangle F=(E\setminus F)\cup(F\setminus E).
+\]
+From part 3, both $E\setminus F$ and $F\setminus E$
+are elementary. Their union is also elementary by part 1.
+
+Hence, $E\triangle F$ is elementary.
+
+
+\noindent\textbf{5. Translation}
+
+Let $x=(x_1,\ldots,x_d)\in\mathbb{R}^d$.
+For each box
+\[
+B_i=I_{i,1}\times\cdots\times I_{i,d},
+\]
+we have
+\[
+B_i+x
+=(I_{i,1}+x_1)\times\cdots\times(I_{i,d}+x_d).
+\]
+Since translating an interval gives another interval,
+$B_i+x$ is still a box.
+
+Also,
+\[
+E+x=\bigcup_{i=1}^{n}(B_i+x).
+\]
+This is a finite union of boxes, so $E+x$ is elementary.
 \end{exercise}
